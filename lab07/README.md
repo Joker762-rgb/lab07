@@ -1,5 +1,4 @@
 luka@luka-VirtualBox:~$ export GITHUB_USERNAME=Joker762-rgb
-luka@luka-VirtualBox:~$ export GITHUB_EMAIL=Lukanych2006@yandex.ru
 luka@luka-VirtualBox:~$ alias edit=nano
 luka@luka-VirtualBox:~$  alias gsed=sed 
 luka@luka-VirtualBox:~$ cd ${GITHUB_USERNAME}/workspace
