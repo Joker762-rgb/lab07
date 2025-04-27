@@ -36,6 +36,14 @@ luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ gsed -i '/project(
 luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ gsed -i '/project(print)/a\
 > set(PRINT_VERSION_MAJOR 0)
 > ' CMakeLists.txt
+luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ wget https://raw.githubusercontent.com/cpp-pm/gate/master/cmake/HunterGate.cmake -O cmake/HunterGate.cmake
+luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ gsed -i '/cmake_minimum_required(VERSION 3.4)/a\
+include("cmake/HunterGate.cmake")
+HunterGate(
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.251.tar.gz"
+    SHA1 "5659b15dc0884d4b03dbd95710e6a1fa0fc3258d"
+)
+' CMakeLists.txt
 luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ git diff
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 89739e7..7497219 100644
@@ -55,6 +63,13 @@ index 89739e7..7497219 100644
  
  add_library(print STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/print.cpp)
  
+luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ git clone https://github.com/cpp-pm/hunter $HOME/projects/hunter
+luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ export HUNTER_ROOT=$HOME/projects/hunter
+luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ rm -rf _builds
+luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ cmake -H. -B_builds -DBUILD_TESTS=ON
+luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ cmake --build _builds
+luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ cmake --build _builds --target test
+
 luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ touch DESCRIPTION && edit DESCRIPTION
 luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ touch ChangeLog.md
 luka@luka-VirtualBox:~/Joker762-rgb/workspace/projects/lab07$ export DATE="`LANG=en_US date +'%a %b %d %Y'`"
